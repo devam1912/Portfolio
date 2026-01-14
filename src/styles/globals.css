@@ -1,0 +1,69 @@
+@import "tailwindcss";
+@import "./animations.css";
+
+/* Light = green pitch, Dark = black pitch */
+:root {
+  --pitch-1: 120 45% 18%;
+  --pitch-2: 120 45% 14%;
+  --pitch-3: 120 45% 20%;
+  --ink: 0 0% 98%;
+  --line: 0 0% 100% / 0.22;
+  --ui: 0 0% 100% / 0.08;
+}
+
+[data-theme="dark"] {
+  --pitch-1: 0 0% 6%;
+  --pitch-2: 0 0% 10%;
+  --pitch-3: 0 0% 8%;
+  --ink: 0 0% 98%;
+  --line: 0 0% 100% / 0.18;
+  --ui: 0 0% 100% / 0.10;
+}
+
+html, body, #root { height: 100%; }
+
+body {
+  color: hsl(var(--ink));
+  background: transparent; /* pitch is rendered by PitchBackground */
+}
+
+.pitch-bg {
+  background:
+    /* stripes */
+    repeating-linear-gradient(
+      90deg,
+      hsl(var(--pitch-1)) 0px,
+      hsl(var(--pitch-1)) 60px,
+      hsl(var(--pitch-2)) 60px,
+      hsl(var(--pitch-2)) 120px
+    ),
+    /* subtle noise-like highlight */
+    radial-gradient(1200px 600px at 50% 30%, hsl(var(--pitch-3) / 0.35), transparent 60%);
+}
+
+.pitch-lines { opacity: 0.9; }
+.pitch-stroke { stroke: hsl(var(--line)); stroke-width: 0.35; vector-effect: non-scaling-stroke; }
+.pitch-fill { fill: hsl(var(--line)); opacity: 0.7; }
+
+.pitch-vignette {
+  background: radial-gradient(900px 500px at 50% 30%, transparent 0%, rgba(0,0,0,0.45) 75%, rgba(0,0,0,0.65) 100%);
+  mix-blend-mode: multiply;
+  opacity: 0.5;
+}
+
+/* UI panels should float above pitch */
+.glass {
+  background: hsl(var(--ui));
+  border: 1px solid hsl(0 0% 100% / 0.12);
+  backdrop-filter: blur(10px);
+}
+
+/* smooth transitions */
+* { transition: background-color 200ms ease, color 200ms ease, border-color 200ms ease, transform 200ms ease; }
+
+/* UI panels should float above the pitch */
+.glass {
+  background: hsl(var(--ui));
+  border: 1px solid hsl(0 0% 100% / 0.12);
+  backdrop-filter: blur(10px);
+}

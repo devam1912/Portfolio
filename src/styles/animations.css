@@ -1,0 +1,53 @@
+@keyframes ballShot {
+  0% { transform: translate(-10vw, 25vh) scale(0.9); opacity: 0; }
+  10% { opacity: 1; }
+  70% { transform: translate(55vw, 22vh) scale(1.05); }
+  100% { transform: translate(70vw, 20vh) scale(0.2); opacity: 0; }
+}
+
+@keyframes netRipple {
+  0% { transform: translate(72vw, 18vh) scale(0.7); opacity: 0; }
+  60% { opacity: 0; }
+  80% { opacity: 1; transform: translate(72vw, 18vh) scale(1.0); }
+  100% { opacity: 0; transform: translate(72vw, 18vh) scale(1.25); }
+}
+
+@keyframes textPop {
+  0% { transform: translate(72vw, 12vh) scale(0.8); opacity: 0; }
+  70% { opacity: 0; }
+  85% { opacity: 1; transform: translate(72vw, 12vh) scale(1.05); }
+  100% { opacity: 0; transform: translate(72vw, 12vh) scale(0.95); }
+}
+
+.goal-ball {
+  position: absolute;
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  background:
+    radial-gradient(circle at 30% 30%, #fff 0 45%, #d9d9d9 46% 60%, #111 61% 100%);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+  animation: ballShot 700ms ease-out both;
+}
+
+.goal-net {
+  position: absolute;
+  width: 180px;
+  height: 120px;
+  border-radius: 18px;
+  border: 2px solid rgba(255,255,255,0.35);
+  background:
+    repeating-linear-gradient(0deg, rgba(255,255,255,0.18) 0 6px, transparent 6px 14px),
+    repeating-linear-gradient(90deg, rgba(255,255,255,0.18) 0 6px, transparent 6px 14px);
+  animation: netRipple 700ms ease-out both;
+}
+
+.goal-text {
+  position: absolute;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.92);
+  text-shadow: 0 12px 35px rgba(0,0,0,0.55);
+  animation: textPop 700ms ease-out both;
+}
