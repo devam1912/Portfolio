@@ -51,3 +51,9 @@
   text-shadow: 0 12px 35px rgba(0,0,0,0.55);
   animation: textPop 700ms ease-out both;
 }
+
+@keyframes softPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.06); }
+}
+.pulse-soft { animation: softPulse 2.2s ease-in-out infinite; }

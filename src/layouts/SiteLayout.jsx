@@ -3,7 +3,7 @@ import Navbar from "../components/Navbar.jsx";
 import ThemeToggle from "../components/ThemeToggle.jsx";
 import PitchBackground from "../components/PitchBackground.jsx";
 import { Link } from "react-router-dom";
-
+import ChatWidget from "../components/ChatWidget.jsx";
 export default function SiteLayout() {
     return (
         <div className="min-h-screen">
@@ -34,6 +34,7 @@ export default function SiteLayout() {
                     © {new Date().getFullYear()} Devam Tanna
                 </div>
             </footer>
+            <ChatWidget endpoint={import.meta.env.VITE_FORMSPREE_ENDPOINT} />
         </div>
     );
 }
