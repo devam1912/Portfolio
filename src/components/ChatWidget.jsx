@@ -45,6 +45,14 @@ export default function ChatWidget({ endpoint }) {
     }
   }, []);
 
+    useEffect(() => {
+  const fn = () => setOpen(true);
+  window.addEventListener("dt:open-chat", fn);
+  return () => window.removeEventListener("dt:open-chat", fn);
+}, []);
+
+
+
   useEffect(() => {
     localStorage.setItem(
       STORAGE_KEY,
