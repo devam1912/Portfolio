@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#0b3d1b"/>
+      <stop offset="0.5" stop-color="#0a3517"/>
+      <stop offset="1" stop-color="#0b3d1b"/>
+    </linearGradient>
+
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#000" flood-opacity="0.45"/>
+    </filter>
+  </defs>
+
+  <!-- Pitch background -->
+  <rect width="1200" height="630" fill="url(#g)"/>
+
+  <!-- Soft dark overlay -->
+  <rect width="1200" height="630" fill="#000" opacity="0.12"/>
+
+  <!-- Stripes -->
+  <g opacity="0.14">
+    <rect x="0" y="0" width="120" height="630" fill="#0d4a20"/>
+    <rect x="240" y="0" width="120" height="630" fill="#0d4a20"/>
+    <rect x="480" y="0" width="120" height="630" fill="#0d4a20"/>
+    <rect x="720" y="0" width="120" height="630" fill="#0d4a20"/>
+    <rect x="960" y="0" width="120" height="630" fill="#0d4a20"/>
+  </g>
+
+  <!-- Field lines -->
+  <g stroke="rgba(255,255,255,0.35)" stroke-width="6" fill="none">
+    <rect x="60" y="60" width="1080" height="510" rx="18"/>
+    <line x1="600" y1="60" x2="600" y2="570"/>
+    <circle cx="600" cy="315" r="92"/>
+    <circle cx="600" cy="315" r="8" fill="rgba(255,255,255,0.35)"/>
+
+    <rect x="60" y="190" width="170" height="250" rx="10"/>
+    <rect x="970" y="190" width="170" height="250" rx="10"/>
+
+    <rect x="60" y="250" width="70" height="130" rx="10"/>
+    <rect x="1070" y="250" width="70" height="130" rx="10"/>
+  </g>
+
+  <!-- Simple football icon -->
+  <g filter="url(#shadow)" transform="translate(150 170)">
+    <circle cx="0" cy="0" r="70" fill="#f2f2f2"/>
+    <circle cx="0" cy="0" r="70" fill="none" stroke="#111" stroke-opacity="0.25" stroke-width="6"/>
+    <path d="M0-36 L28-18 L18 16 L-18 16 L-28-18 Z" fill="#111" opacity="0.88"/>
+  </g>
+
+  <!-- Text -->
+  <g filter="url(#shadow)">
+    <text x="280" y="270" font-family="Inter, Arial, sans-serif" font-size="68" font-weight="850" fill="rgba(255,255,255,0.95)">
+      Devam Tanna
+    </text>
+
+    <text x="280" y="340" font-family="Inter, Arial, sans-serif" font-size="34" font-weight="700" fill="rgba(255,255,255,0.88)">
+      Devam’s Portfolio
+    </text>
+
+    <text x="280" y="395" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="550" fill="rgba(255,255,255,0.75)">
+      Backend-focused full-stack developer • APIs • Auth • Payments • Real-time
+    </text>
+
+    <text x="280" y="445" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="500" fill="rgba(255,255,255,0.72)">
+      devamtanna07@gmail.com • github.com/devam1912
+    </text>
+  </g>
+</svg>
