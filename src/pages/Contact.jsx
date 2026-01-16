@@ -4,7 +4,8 @@ export default function Contact() {
       <div className="rounded-3xl glass p-6">
         <h2 className="text-2xl font-semibold">Contact</h2>
         <p className="mt-2 text-sm opacity-90">
-          Fastest way: use the chat widget (bottom-right). You can also reach me via links below.
+          Fastest way: use the chat widget (bottom-right). You can also reach me
+          via links below.
         </p>
 
         <div className="mt-4 flex flex-wrap gap-2">
@@ -39,6 +40,16 @@ export default function Contact() {
           >
             LinkedIn ↗
           </a>
+
+          <a
+            className="rounded-2xl border border-white/15 bg-white/10 px-4 py-2 text-sm font-semibold hover:bg-white/15"
+            href="/resume/Resume.pdf"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Resume ↗
+          </a>
+
 
           <button
             type="button"

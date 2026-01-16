@@ -1,49 +1,59 @@
 import { NavLink } from "react-router-dom";
 import { useEffect, useState } from "react";
 
-const linkBase =
-  "rounded-2xl px-3 py-2 text-sm transition hover:bg-white/10 w-full text-left";
+const desktopLinkBase =
+  "rounded-2xl px-3 py-2 text-sm transition hover:bg-white/10";
 
-function Links({ onClick }) {
+function Links({ onClick, variant = "desktop" }) {
+  const base =
+    variant === "mobile"
+      ? "rounded-2xl px-3 py-2 text-sm transition hover:bg-white/10 w-full text-left"
+      : desktopLinkBase;
+
   return (
     <>
       <NavLink
         to="/"
         end
         onClick={onClick}
-        className={({ isActive }) =>
-          `${linkBase} ${isActive ? "bg-white/15" : ""}`
-        }
+        className={({ isActive }) => `${base} ${isActive ? "bg-white/15" : ""}`}
       >
         Home
       </NavLink>
+
       <NavLink
         to="/about"
         onClick={onClick}
-        className={({ isActive }) =>
-          `${linkBase} ${isActive ? "bg-white/15" : ""}`
-        }
+        className={({ isActive }) => `${base} ${isActive ? "bg-white/15" : ""}`}
       >
         About
       </NavLink>
+
       <NavLink
         to="/projects"
         onClick={onClick}
-        className={({ isActive }) =>
-          `${linkBase} ${isActive ? "bg-white/15" : ""}`
-        }
+        className={({ isActive }) => `${base} ${isActive ? "bg-white/15" : ""}`}
       >
         Projects
       </NavLink>
+
       <NavLink
         to="/contact"
         onClick={onClick}
-        className={({ isActive }) =>
-          `${linkBase} ${isActive ? "bg-white/15" : ""}`
-        }
+        className={({ isActive }) => `${base} ${isActive ? "bg-white/15" : ""}`}
       >
         Contact
       </NavLink>
+
+      <a
+        href="/resume/Resume.pdf"
+        target="_blank"
+        rel="noreferrer"
+        onClick={onClick}
+        className={base}
+      >
+        Resume ↗
+      </a>
     </>
   );
 }
@@ -64,7 +74,7 @@ export default function Navbar() {
     <div className="relative">
       {/* Desktop */}
       <nav className="hidden items-center gap-1 sm:flex">
-        <Links />
+        <Links variant="desktop" />
       </nav>
 
       {/* Mobile button */}
@@ -75,7 +85,12 @@ export default function Navbar() {
         aria-label={open ? "Close menu" : "Open menu"}
       >
         {open ? (
-          <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" aria-hidden="true">
+          <svg
+            viewBox="0 0 24 24"
+            className="h-5 w-5"
+            fill="none"
+            aria-hidden="true"
+          >
             <path
               d="M6 6l12 12M18 6L6 18"
               stroke="currentColor"
@@ -84,7 +99,12 @@ export default function Navbar() {
             />
           </svg>
         ) : (
-          <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" aria-hidden="true">
+          <svg
+            viewBox="0 0 24 24"
+            className="h-5 w-5"
+            fill="none"
+            aria-hidden="true"
+          >
             <path
               d="M4 7h16M4 12h16M4 17h16"
               stroke="currentColor"
@@ -105,11 +125,11 @@ export default function Navbar() {
         />
       ) : null}
 
-      {/* Mobile dropdown (small, readable, above overlay) */}
+      {/* Mobile dropdown */}
       {open ? (
         <div className="absolute right-0 mt-2 z-50 w-52 overflow-hidden rounded-3xl border border-white/15 glass p-2 sm:hidden animate-popIn">
-          <div className="flex flex-col gap-1">
-            <Links onClick={() => setOpen(false)} />
+          <div className="flex flex-col gap-1 min-w-full">
+            <Links variant="mobile" onClick={() => setOpen(false)} />
           </div>
         </div>
       ) : null}
