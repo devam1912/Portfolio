@@ -10,7 +10,11 @@ export default function SiteLayout() {
             <PitchBackground />
             <header className="sticky top-0 z-40 border-b border-white/10 backdrop-blur">
                 <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
-                    <Link to="/" className="flex items-center gap-3 rounded-xl focus:outline-none focus:ring-2 focus:ring-white/30">
+                    <Link
+                        to="/"
+                        className="flex items-center gap-3 rounded-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-white/30"
+                    >
+
                         <div className="h-9 w-9 rounded-full border border-white/15 bg-white/10" />
                         <div className="leading-tight">
                             <div className="text-sm font-semibold">Devam Tanna</div>
