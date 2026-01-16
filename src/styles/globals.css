@@ -6,30 +6,41 @@
   --pitch-1: 120 45% 18%;
   --pitch-2: 120 45% 14%;
   --pitch-3: 120 45% 20%;
+
   --ink: 0 0% 98%;
-  --line: 0 0% 100% / 0.22;
-  --ui: 0 0% 100% / 0.08;
+
+  /* lines + UI layers */
+  --line: 0 0% 100% / 0.18;
+  --ui: 0 0% 100% / 0.10;        /* top glass layer */
+  --uiStrong: 0 0% 0% / 0.18;    /* darker base for contrast */
 }
 
 [data-theme="dark"] {
   --pitch-1: 0 0% 6%;
   --pitch-2: 0 0% 10%;
   --pitch-3: 0 0% 8%;
+
   --ink: 0 0% 98%;
-  --line: 0 0% 100% / 0.18;
-  --ui: 0 0% 100% / 0.10;
+
+  --line: 0 0% 100% / 0.14;
+  --ui: 0 0% 100% / 0.12;
+  --uiStrong: 0 0% 0% / 0.30;
 }
 
-html, body, #root { height: 100%; }
+html,
+body,
+#root {
+  height: 100%;
+}
 
 body {
   color: hsl(var(--ink));
   background: transparent; /* pitch is rendered by PitchBackground */
 }
 
+/* Pitch base */
 .pitch-bg {
   background:
-    /* stripes */
     repeating-linear-gradient(
       90deg,
       hsl(var(--pitch-1)) 0px,
@@ -37,33 +48,60 @@ body {
       hsl(var(--pitch-2)) 60px,
       hsl(var(--pitch-2)) 120px
     ),
-    /* subtle noise-like highlight */
-    radial-gradient(1200px 600px at 50% 30%, hsl(var(--pitch-3) / 0.35), transparent 60%);
+    radial-gradient(
+      1200px 600px at 50% 30%,
+      hsl(var(--pitch-3) / 0.35),
+      transparent 60%
+    );
 }
 
-.pitch-lines { opacity: 0.9; }
-.pitch-stroke { stroke: hsl(var(--line)); stroke-width: 0.35; vector-effect: non-scaling-stroke; }
-.pitch-fill { fill: hsl(var(--line)); opacity: 0.7; }
+/* Pitch lines */
+.pitch-lines {
+  opacity: 0.55;
+}
 
+.pitch-stroke {
+  stroke: hsl(var(--line));
+  stroke-width: 0.35;
+  vector-effect: non-scaling-stroke;
+}
+
+.pitch-fill {
+  fill: hsl(var(--line));
+  opacity: 0.7;
+}
+
+/* Vignette */
 .pitch-vignette {
-  background: radial-gradient(900px 500px at 50% 30%, transparent 0%, rgba(0,0,0,0.45) 75%, rgba(0,0,0,0.65) 100%);
+  background: radial-gradient(
+    900px 500px at 50% 30%,
+    transparent 0%,
+    rgba(0, 0, 0, 0.45) 75%,
+    rgba(0, 0, 0, 0.65) 100%
+  );
   mix-blend-mode: multiply;
   opacity: 0.5;
 }
 
-/* UI panels should float above pitch */
+/* Glass panels (stronger contrast for readability) */
 .glass {
-  background: hsl(var(--ui));
-  border: 1px solid hsl(0 0% 100% / 0.12);
-  backdrop-filter: blur(10px);
+  background: linear-gradient(to bottom, hsl(var(--ui)), hsl(var(--uiStrong)));
+  border: 1px solid hsl(0 0% 100% / 0.14);
+  backdrop-filter: blur(12px);
 }
 
-/* smooth transitions */
-* { transition: background-color 200ms ease, color 200ms ease, border-color 200ms ease, transform 200ms ease; }
-
-/* UI panels should float above the pitch */
-.glass {
-  background: hsl(var(--ui));
-  border: 1px solid hsl(0 0% 100% / 0.12);
-  backdrop-filter: blur(10px);
+/* Smooth transitions */
+* {
+  transition: background-color 200ms ease, color 200ms ease,
+    border-color 200ms ease, transform 200ms ease;
+}
+/* Stronger glass for header/navbar so text never clashes with pitch lines */
+.glass-header {
+  background: linear-gradient(
+    to bottom,
+    hsl(0 0% 0% / 0.55),
+    hsl(0 0% 0% / 0.25)
+  );
+  border: 1px solid hsl(0 0% 100% / 0.16);
+  backdrop-filter: blur(14px);
 }
