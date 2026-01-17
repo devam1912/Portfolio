@@ -17,7 +17,22 @@ export default function SiteLayout() {
               className="flex items-center gap-3 rounded-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-white/30"
               aria-label="Go to home"
             >
-              <div className="h-9 w-9 rounded-full border border-white/15 bg-white/10" />
+              <div className="h-9 w-9 overflow-hidden rounded-full border border-white/15 bg-white/10">
+                <img
+                  src="/profile.png"
+                  alt="Devam Tanna"
+                  className="h-full w-full object-cover select-none pointer-events-none"
+                  draggable="false"
+                  onError={(e) => {
+                    e.currentTarget.style.display = "none";
+                    e.currentTarget.parentElement.style.display = "grid";
+                    e.currentTarget.parentElement.style.placeItems = "center";
+                    e.currentTarget.parentElement.textContent = "DT";
+                  }}
+                />
+
+              </div>
+
               <div className="leading-tight">
                 <div className="text-sm font-bold">Devam Tanna</div>
                 <div className="text-xs opacity-90">Portfolio</div>
@@ -36,66 +51,66 @@ export default function SiteLayout() {
         <Outlet />
       </main>
 
-     <footer className="border-t border-white/10">
-  <div className="mx-auto max-w-6xl px-4 py-8">
-    <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
-      <div>
-        <div className="text-sm font-semibold">Devam Tanna</div>
-        <div className="mt-1 text-xs opacity-80">
-          Backend-focused full-stack developer
+      <footer className="border-t border-white/10">
+        <div className="mx-auto max-w-6xl px-4 py-8">
+          <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
+            <div>
+              <div className="text-sm font-semibold">Devam Tanna</div>
+              <div className="mt-1 text-xs opacity-80">
+                Backend-focused full-stack developer
+              </div>
+            </div>
+
+            <div className="flex flex-wrap gap-2">
+              <a
+                className="rounded-2xl border border-white/15 bg-white/10 px-4 py-2 text-sm font-semibold hover:bg-white/15"
+                href="mailto:devamtanna07@gmail.com"
+              >
+                Email
+              </a>
+
+              <a
+                className="rounded-2xl border border-white/15 bg-white/10 px-4 py-2 text-sm font-semibold hover:bg-white/15"
+                href="https://github.com/devam1912"
+                target="_blank"
+                rel="noreferrer"
+              >
+                GitHub ↗
+              </a>
+
+              <a
+                className="rounded-2xl border border-white/15 bg-white/10 px-4 py-2 text-sm font-semibold hover:bg-white/15"
+                href="https://www.linkedin.com/in/devam-tanna-885a96286/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                LinkedIn ↗
+              </a>
+
+              <a
+                className="rounded-2xl border border-white/15 bg-white/10 px-4 py-2 text-sm font-semibold hover:bg-white/15"
+                href="/resume/Resume.pdf"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Resume ↗
+              </a>
+
+              <button
+                type="button"
+                className="rounded-2xl border border-white/15 bg-white/10 px-4 py-2 text-sm font-semibold hover:bg-white/15"
+                onClick={() => window.dispatchEvent(new Event("dt:open-chat"))}
+              >
+                Open chat
+              </button>
+            </div>
+          </div>
+
+          <div className="mt-6 text-xs opacity-70">
+            © {new Date().getFullYear()} Devam Tanna • Built with React + Vite + Tailwind
+          </div>
         </div>
-      </div>
-
-      <div className="flex flex-wrap gap-2">
-        <a
-          className="rounded-2xl border border-white/15 bg-white/10 px-4 py-2 text-sm font-semibold hover:bg-white/15"
-          href="mailto:devamtanna07@gmail.com"
-        >
-          Email
-        </a>
-
-        <a
-          className="rounded-2xl border border-white/15 bg-white/10 px-4 py-2 text-sm font-semibold hover:bg-white/15"
-          href="https://github.com/devam1912"
-          target="_blank"
-          rel="noreferrer"
-        >
-          GitHub ↗
-        </a>
-
-        <a
-          className="rounded-2xl border border-white/15 bg-white/10 px-4 py-2 text-sm font-semibold hover:bg-white/15"
-          href="https://www.linkedin.com/in/devam-tanna-885a96286/"
-          target="_blank"
-          rel="noreferrer"
-        >
-          LinkedIn ↗
-        </a>
-
-        <a
-          className="rounded-2xl border border-white/15 bg-white/10 px-4 py-2 text-sm font-semibold hover:bg-white/15"
-          href="/resume/Resume.pdf"
-          target="_blank"
-          rel="noreferrer"
-        >
-          Resume ↗
-        </a>
-
-        <button
-          type="button"
-          className="rounded-2xl border border-white/15 bg-white/10 px-4 py-2 text-sm font-semibold hover:bg-white/15"
-          onClick={() => window.dispatchEvent(new Event("dt:open-chat"))}
-        >
-          Open chat
-        </button>
-      </div>
-    </div>
-
-    <div className="mt-6 text-xs opacity-70">
-      © {new Date().getFullYear()} Devam Tanna • Built with React + Vite + Tailwind
-    </div>
-  </div>
-</footer>
+      </footer>
 
 
       <ChatWidget endpoint={import.meta.env.VITE_FORMSPREE_ENDPOINT} />
