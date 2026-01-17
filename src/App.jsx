@@ -6,6 +6,7 @@ import Projects from "./pages/Projects.jsx";
 import Contact from "./pages/Contact.jsx";
 import ScrollToTop from "./components/ScrollToTop.jsx";
 import NotFound from "./pages/NotFound.jsx";
+import Achievements from "./pages/Achievements.jsx";
 
 function FadeRoute({ children }) {
   const location = useLocation();
@@ -39,6 +40,15 @@ export default function App() {
             }
           />
           <Route
+            path="/achievements"
+            element={
+              <FadeRoute>
+                <Achievements />
+              </FadeRoute>
+            }
+          />
+
+          <Route
             path="/projects"
             element={
               <FadeRoute>
@@ -54,7 +64,7 @@ export default function App() {
               </FadeRoute>
             }
           />
-        <Route path="*" element={<FadeRoute><NotFound /></FadeRoute>} />
+          <Route path="*" element={<FadeRoute><NotFound /></FadeRoute>} />
 
         </Route>
       </Routes>

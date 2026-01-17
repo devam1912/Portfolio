@@ -40,6 +40,14 @@ function Links({ onClick, variant = "desktop" }) {
       </NavLink>
 
       <NavLink
+        to="/achievements"
+        onClick={onClick}
+        className={({ isActive }) => `${base} ${isActive ? active : ""}`}
+      >
+        Achievements
+      </NavLink>
+
+      <NavLink
         to="/contact"
         onClick={onClick}
         className={({ isActive }) => `${base} ${isActive ? active : ""}`}
