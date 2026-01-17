@@ -4,6 +4,7 @@ import Home from "./pages/Home.jsx";
 import About from "./pages/About.jsx";
 import Projects from "./pages/Projects.jsx";
 import Contact from "./pages/Contact.jsx";
+import ScrollToTop from "./components/ScrollToTop.jsx";
 
 function FadeRoute({ children }) {
   const location = useLocation();
@@ -16,42 +17,45 @@ function FadeRoute({ children }) {
 
 export default function App() {
   return (
-    <Routes>
-      <Route element={<SiteLayout />}>
-        <Route
-          path="/"
-          element={
-            <FadeRoute>
-              <Home />
-            </FadeRoute>
-          }
-        />
-        <Route
-          path="/about"
-          element={
-            <FadeRoute>
-              <About />
-            </FadeRoute>
-          }
-        />
-        <Route
-          path="/projects"
-          element={
-            <FadeRoute>
-              <Projects />
-            </FadeRoute>
-          }
-        />
-        <Route
-          path="/contact"
-          element={
-            <FadeRoute>
-              <Contact />
-            </FadeRoute>
-          }
-        />
-        <Route path="*" element={<Navigate to="/" replace />} />
-      </Route>
-    </Routes>
+    <>
+      <ScrollToTop />
+      <Routes>
+        <Route element={<SiteLayout />}>
+          <Route
+            path="/"
+            element={
+              <FadeRoute>
+                <Home />
+              </FadeRoute>
+            }
+          />
+          <Route
+            path="/about"
+            element={
+              <FadeRoute>
+                <About />
+              </FadeRoute>
+            }
+          />
+          <Route
+            path="/projects"
+            element={
+              <FadeRoute>
+                <Projects />
+              </FadeRoute>
+            }
+          />
+          <Route
+            path="/contact"
+            element={
+              <FadeRoute>
+                <Contact />
+              </FadeRoute>
+            }
+          />
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Route>
+      </Routes>
+    </>
   );
 }
