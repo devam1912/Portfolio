@@ -57,8 +57,9 @@ export default function SiteLayout() {
             <div>
               <div className="text-sm font-semibold">Devam Tanna</div>
               <div className="mt-1 text-xs opacity-80">
-                Backend-focused full-stack developer
+                MERN developer • Backend-first • Problem-solving mindset
               </div>
+
             </div>
 
             <div className="flex flex-wrap gap-2">

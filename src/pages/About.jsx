@@ -4,9 +4,10 @@ export default function About() {
       <div className="rounded-3xl glass p-6">
         <h2 className="text-2xl font-semibold">About</h2>
         <p className="mt-2 text-sm opacity-90">
-          Backend-focused full-stack developer building production-grade systems with clean APIs,
-          solid data modeling, and smooth user experiences.
+          MERN developer focused on backend engineering and problem-solving — building secure APIs,
+          solid data models, and optimized web experiences with smooth UX.
         </p>
+
       </div>
 
       <div className="grid gap-4 md:grid-cols-2">
