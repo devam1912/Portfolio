@@ -1,42 +1,38 @@
 import { useEffect, useState } from "react";
-import GoalToggleAnimation from "./GoalToggleAnimation.jsx";
 
-const STORAGE_KEY = "dt_theme";
+const KEY = "dt-theme"; // "green" | "dark"
 
 export default function ThemeToggle() {
-  const [theme, setTheme] = useState("light");
-  const [play, setPlay] = useState(false);
+  const [mode, setMode] = useState("green");
 
   useEffect(() => {
-    const saved = localStorage.getItem(STORAGE_KEY);
-    const initial = saved === "dark" ? "dark" : "light";
-    setTheme(initial);
-    document.documentElement.setAttribute("data-theme", initial);
+    const saved = localStorage.getItem(KEY);
+    const initial = saved === "dark" ? "dark" : "green";
+    setMode(initial);
+    document.documentElement.setAttribute(
+      "data-theme",
+      initial === "dark" ? "dark" : ""
+    );
   }, []);
 
   function toggle() {
-    const next = theme === "dark" ? "light" : "dark";
-    setTheme(next);
-    localStorage.setItem(STORAGE_KEY, next);
-    document.documentElement.setAttribute("data-theme", next);
-
-    // play animation
-    setPlay(true);
-    window.setTimeout(() => setPlay(false), 750);
+    const next = mode === "dark" ? "green" : "dark";
+    setMode(next);
+    localStorage.setItem(KEY, next);
+    document.documentElement.setAttribute(
+      "data-theme",
+      next === "dark" ? "dark" : ""
+    );
   }
 
   return (
-    <>
-      <button
-        onClick={toggle}
-        className="rounded-full border border-white/15 bg-white/10 px-3 py-1.5 text-sm hover:bg-white/15"
-        aria-label="Toggle theme"
-        type="button"
-      >
-        {theme === "dark" ? "Black Pitch" : "Green Pitch"}
-      </button>
-
-      <GoalToggleAnimation play={play} />
-    </>
+    <button
+      type="button"
+      onClick={toggle}
+      className="rounded-2xl border border-white/15 bg-white/10 px-4 py-2 text-sm font-semibold hover:bg-white/15"
+      aria-label="Toggle pitch theme"
+    >
+      {mode === "dark" ? "Black Pitch" : "Green Pitch"}
+    </button>
   );
 }

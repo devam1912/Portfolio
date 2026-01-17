@@ -1,39 +1,31 @@
 export default function PitchBackground() {
   return (
-    <div className="pointer-events-none fixed inset-0 -z-10">
-      {/* Pitch base */}
+    <div className="fixed inset-0 -z-50 pointer-events-none">
       <div className="absolute inset-0 pitch-bg" />
 
-      {/* White lines */}
+      {/* Subtle spotlight so pitch feels alive */}
+      <div className="absolute inset-0 pitch-spotlight" />
+
+      {/* Lines */}
       <svg
-        className="absolute inset-0 h-full w-full pitch-lines"
-        viewBox="0 0 100 60"
+        className="absolute inset-0 pitch-lines"
+        viewBox="0 0 100 100"
         preserveAspectRatio="none"
         aria-hidden="true"
       >
-        {/* Outer boundary */}
-        <rect x="2" y="2" width="96" height="56" fill="none" className="pitch-stroke" />
-
-        {/* Halfway line */}
-        <line x1="50" y1="2" x2="50" y2="58" className="pitch-stroke" />
-
-        {/* Center circle */}
-        <circle cx="50" cy="30" r="8" fill="none" className="pitch-stroke" />
-        <circle cx="50" cy="30" r="0.8" className="pitch-fill" />
-
-        {/* Left penalty box */}
-        <rect x="2" y="18" width="14" height="24" fill="none" className="pitch-stroke" />
-        <rect x="2" y="24" width="6" height="12" fill="none" className="pitch-stroke" />
-        <circle cx="12" cy="30" r="0.7" className="pitch-fill" />
-
-        {/* Right penalty box */}
-        <rect x="84" y="18" width="14" height="24" fill="none" className="pitch-stroke" />
-        <rect x="92" y="24" width="6" height="12" fill="none" className="pitch-stroke" />
-        <circle cx="88" cy="30" r="0.7" className="pitch-fill" />
+        {/* outer */}
+        <rect x="6" y="8" width="88" height="84" className="pitch-stroke" fill="none" />
+        {/* mid line */}
+        <line x1="50" y1="8" x2="50" y2="92" className="pitch-stroke" />
+        {/* center circle */}
+        <circle cx="50" cy="50" r="10" className="pitch-stroke" fill="none" />
+        <circle cx="50" cy="50" r="0.8" className="pitch-fill" />
+        {/* boxes */}
+        <rect x="6" y="32" width="16" height="36" className="pitch-stroke" fill="none" />
+        <rect x="78" y="32" width="16" height="36" className="pitch-stroke" fill="none" />
+        <rect x="6" y="42" width="7" height="16" className="pitch-stroke" fill="none" />
+        <rect x="87" y="42" width="7" height="16" className="pitch-stroke" fill="none" />
       </svg>
-
-      {/* soft vignette */}
-      <div className="absolute inset-0 pitch-vignette" />
     </div>
   );
 }

@@ -1,111 +1,100 @@
 @import "tailwindcss";
 @import "./animations.css";
 
-/* Light = green pitch, Dark = black pitch */
+/* Default = Green Pitch */
 :root {
-  --pitch-1: 120 45% 18%;
-  --pitch-2: 120 45% 14%;
-  --pitch-3: 120 45% 20%;
+  --pitch-a: #0e3b1e;
+  --pitch-b: #0a2d16;
+  --pitch-c: #0f4423;
 
-  --ink: 0 0% 98%;
+  --ink: rgba(255,255,255,0.95);
+  --line: rgba(255,255,255,0.22);
 
-  /* lines + UI layers */
-  --line: 0 0% 100% / 0.18;
-  --ui: 0 0% 100% / 0.10;        /* top glass layer */
-  --uiStrong: 0 0% 0% / 0.18;    /* darker base for contrast */
+  /* Panels */
+  --panel: rgba(18,18,18,0.72);
+  --panel2: rgba(18,18,18,0.58);
+
+  /* Header */
+  --header: rgba(10,10,10,0.68);
+
+  /* Footer text */
+  --muted: rgba(255,255,255,0.75);
 }
 
+/* Black Pitch */
 [data-theme="dark"] {
-  --pitch-1: 0 0% 6%;
-  --pitch-2: 0 0% 10%;
-  --pitch-3: 0 0% 8%;
+  --pitch-a: #0a0a0a;
+  --pitch-b: #111111;
+  --pitch-c: #0d0d0d;
 
-  --ink: 0 0% 98%;
+  --ink: rgba(255,255,255,0.95);
+  --line: rgba(255,255,255,0.18);
 
-  --line: 0 0% 100% / 0.14;
-  --ui: 0 0% 100% / 0.12;
-  --uiStrong: 0 0% 0% / 0.30;
+  --panel: rgba(18,18,18,0.78);
+  --panel2: rgba(18,18,18,0.62);
+
+  --header: rgba(5,5,5,0.72);
+
+  --muted: rgba(255,255,255,0.72);
 }
 
-html,
-body,
-#root {
-  height: 100%;
-}
+html, body, #root { height: 100%; }
 
 body {
-  color: hsl(var(--ink));
-  background: transparent; /* pitch is rendered by PitchBackground */
+  color: var(--ink);
+  background: transparent;
 }
 
-/* Pitch base */
+/* Pitch background */
 .pitch-bg {
   background:
     repeating-linear-gradient(
       90deg,
-      hsl(var(--pitch-1)) 0px,
-      hsl(var(--pitch-1)) 60px,
-      hsl(var(--pitch-2)) 60px,
-      hsl(var(--pitch-2)) 120px
+      var(--pitch-a) 0px,
+      var(--pitch-a) 70px,
+      var(--pitch-b) 70px,
+      var(--pitch-b) 140px
     ),
     radial-gradient(
-      1200px 600px at 50% 30%,
-      hsl(var(--pitch-3) / 0.35),
+      1200px 700px at 50% 25%,
+      color-mix(in srgb, var(--pitch-c) 70%, transparent),
       transparent 60%
     );
 }
 
-/* Pitch lines */
-.pitch-lines {
+/* Spotlight adds depth */
+.pitch-spotlight {
+  background: radial-gradient(
+    900px 520px at 50% 20%,
+    rgba(255,255,255,0.06),
+    rgba(0,0,0,0.35) 70%,
+    rgba(0,0,0,0.55) 100%
+  );
   opacity: 0.55;
 }
 
-.pitch-stroke {
-  stroke: hsl(var(--line));
-  stroke-width: 0.35;
-  vector-effect: non-scaling-stroke;
-}
+.pitch-lines { opacity: 0.35; }
+.pitch-stroke { stroke: var(--line); stroke-width: 0.35; vector-effect: non-scaling-stroke; }
+.pitch-fill { fill: var(--line); opacity: 0.75; }
 
-.pitch-fill {
-  fill: hsl(var(--line));
-  opacity: 0.7;
-}
-
-/* Vignette */
-.pitch-vignette {
-  background: radial-gradient(
-    900px 500px at 50% 30%,
-    transparent 0%,
-    rgba(0, 0, 0, 0.45) 75%,
-    rgba(0, 0, 0, 0.65) 100%
-  );
-  mix-blend-mode: multiply;
-  opacity: 0.5;
-}
-
-/* Glass panels (stronger contrast for readability) */
+/* Panels: no blur = no wash */
 .glass {
-  background: linear-gradient(to bottom, hsl(var(--ui)), hsl(var(--uiStrong)));
-  border: 1px solid hsl(0 0% 100% / 0.14);
-  backdrop-filter: blur(12px);
+  background: linear-gradient(to bottom, var(--panel), var(--panel2));
+  border: 1px solid rgba(255,255,255,0.14);
 }
 
-/* Smooth transitions */
-* {
-  transition: background-color 200ms ease, color 200ms ease,
-    border-color 200ms ease, transform 200ms ease;
-}
-/* Stronger glass for header/navbar so text never clashes with pitch lines */
 .glass-header {
-  background: linear-gradient(
-    to bottom,
-    hsl(0 0% 0% / 0.55),
-    hsl(0 0% 0% / 0.25)
-  );
-  border: 1px solid hsl(0 0% 100% / 0.16);
-  backdrop-filter: blur(14px);
+  background: var(--header);
+  border-bottom: 1px solid rgba(255,255,255,0.12);
 }
 
 .avatar-glow {
   box-shadow: 0 0 0 2px rgba(255,255,255,0.08), 0 10px 25px rgba(0,0,0,0.25);
 }
+
+/* Make muted text readable everywhere */
+.opacity-80 { opacity: 1 !important; color: var(--muted) !important; }
+.opacity-70 { opacity: 1 !important; color: var(--muted) !important; }
+
+/* Smooth transitions */
+* { transition: background-color 200ms ease, color 200ms ease, border-color 200ms ease, transform 200ms ease; }
