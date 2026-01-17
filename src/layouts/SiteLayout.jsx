@@ -36,11 +36,67 @@ export default function SiteLayout() {
         <Outlet />
       </main>
 
-      <footer className="border-t border-white/10">
-        <div className="mx-auto max-w-6xl px-4 py-6 text-xs opacity-80">
-          © {new Date().getFullYear()} Devam Tanna
+     <footer className="border-t border-white/10">
+  <div className="mx-auto max-w-6xl px-4 py-8">
+    <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
+      <div>
+        <div className="text-sm font-semibold">Devam Tanna</div>
+        <div className="mt-1 text-xs opacity-80">
+          Backend-focused full-stack developer
         </div>
-      </footer>
+      </div>
+
+      <div className="flex flex-wrap gap-2">
+        <a
+          className="rounded-2xl border border-white/15 bg-white/10 px-4 py-2 text-sm font-semibold hover:bg-white/15"
+          href="mailto:devamtanna07@gmail.com"
+        >
+          Email
+        </a>
+
+        <a
+          className="rounded-2xl border border-white/15 bg-white/10 px-4 py-2 text-sm font-semibold hover:bg-white/15"
+          href="https://github.com/devam1912"
+          target="_blank"
+          rel="noreferrer"
+        >
+          GitHub ↗
+        </a>
+
+        <a
+          className="rounded-2xl border border-white/15 bg-white/10 px-4 py-2 text-sm font-semibold hover:bg-white/15"
+          href="https://www.linkedin.com/in/devam-tanna-885a96286/"
+          target="_blank"
+          rel="noreferrer"
+        >
+          LinkedIn ↗
+        </a>
+
+        <a
+          className="rounded-2xl border border-white/15 bg-white/10 px-4 py-2 text-sm font-semibold hover:bg-white/15"
+          href="/resume/Resume.pdf"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Resume ↗
+        </a>
+
+        <button
+          type="button"
+          className="rounded-2xl border border-white/15 bg-white/10 px-4 py-2 text-sm font-semibold hover:bg-white/15"
+          onClick={() => window.dispatchEvent(new Event("dt:open-chat"))}
+        >
+          Open chat
+        </button>
+      </div>
+    </div>
+
+    <div className="mt-6 text-xs opacity-70">
+      © {new Date().getFullYear()} Devam Tanna • Built with React + Vite + Tailwind
+    </div>
+  </div>
+</footer>
+
 
       <ChatWidget endpoint={import.meta.env.VITE_FORMSPREE_ENDPOINT} />
     </div>

@@ -5,6 +5,7 @@ import About from "./pages/About.jsx";
 import Projects from "./pages/Projects.jsx";
 import Contact from "./pages/Contact.jsx";
 import ScrollToTop from "./components/ScrollToTop.jsx";
+import NotFound from "./pages/NotFound.jsx";
 
 function FadeRoute({ children }) {
   const location = useLocation();
@@ -53,7 +54,8 @@ export default function App() {
               </FadeRoute>
             }
           />
-          <Route path="*" element={<Navigate to="/" replace />} />
+        <Route path="*" element={<FadeRoute><NotFound /></FadeRoute>} />
+
         </Route>
       </Routes>
     </>

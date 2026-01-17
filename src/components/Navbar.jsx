@@ -2,13 +2,15 @@ import { NavLink } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 const desktopLinkBase =
-  "rounded-2xl px-3 py-2 text-sm transition hover:bg-white/10";
+  "rounded-2xl border border-transparent px-3 py-2 text-sm transition hover:bg-white/10 hover:border-white/10";
 
 function Links({ onClick, variant = "desktop" }) {
   const base =
     variant === "mobile"
-      ? "rounded-2xl px-3 py-2 text-sm transition hover:bg-white/10 w-full text-left"
+      ? "rounded-2xl border border-transparent px-3 py-2 text-sm transition hover:bg-white/10 hover:border-white/10 w-full text-left"
       : desktopLinkBase;
+
+  const active = "bg-white/15 border-white/15";
 
   return (
     <>
@@ -16,7 +18,7 @@ function Links({ onClick, variant = "desktop" }) {
         to="/"
         end
         onClick={onClick}
-        className={({ isActive }) => `${base} ${isActive ? "bg-white/15" : ""}`}
+        className={({ isActive }) => `${base} ${isActive ? active : ""}`}
       >
         Home
       </NavLink>
@@ -24,7 +26,7 @@ function Links({ onClick, variant = "desktop" }) {
       <NavLink
         to="/about"
         onClick={onClick}
-        className={({ isActive }) => `${base} ${isActive ? "bg-white/15" : ""}`}
+        className={({ isActive }) => `${base} ${isActive ? active : ""}`}
       >
         About
       </NavLink>
@@ -32,7 +34,7 @@ function Links({ onClick, variant = "desktop" }) {
       <NavLink
         to="/projects"
         onClick={onClick}
-        className={({ isActive }) => `${base} ${isActive ? "bg-white/15" : ""}`}
+        className={({ isActive }) => `${base} ${isActive ? active : ""}`}
       >
         Projects
       </NavLink>
@@ -40,7 +42,7 @@ function Links({ onClick, variant = "desktop" }) {
       <NavLink
         to="/contact"
         onClick={onClick}
-        className={({ isActive }) => `${base} ${isActive ? "bg-white/15" : ""}`}
+        className={({ isActive }) => `${base} ${isActive ? active : ""}`}
       >
         Contact
       </NavLink>
