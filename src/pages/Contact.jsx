@@ -61,14 +61,7 @@ export default function Contact() {
         </div>
       </div>
 
-      <div className="rounded-3xl glass p-6">
-        <div className="text-sm font-semibold">What to include</div>
-        <ul className="mt-3 list-disc space-y-1 pl-5 text-sm opacity-90">
-          <li>Your name + what you’re reaching out about</li>
-          <li>Timeline / deadline (if any)</li>
-          <li>Links (repo, doc, screenshot) if relevant</li>
-        </ul>
-      </div>
+    
     </section>
   );
 }
